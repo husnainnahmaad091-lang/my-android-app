@@ -1,0 +1,59 @@
+@{
+    var title = ViewData["Title"] as string ?? "StudyBuddy Boss Edition";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@title</title>
+    <link rel="stylesheet" href="/css/site.css" />
+</head>
+<body class="sb-body">
+    <div class="sb-app-shell">
+        <header class="sb-header">
+            <div class="sb-header-left">
+                <div class="sb-logo-circle">SB</div>
+                <div class="sb-header-text">
+                    <div class="sb-app-name">StudyBuddy Boss Edition</div>
+                    <div class="sb-app-sub">Stay on top of your study game</div>
+                </div>
+            </div>
+            <div class="sb-header-right">
+                <div class="sb-notification-icon">🔔</div>
+                <form asp-controller="Auth" asp-action="Logout" method="post">
+                    <button type="submit" class="sb-avatar">Logout</button>
+                </form>
+            </div>
+        </header>
+
+        <main class="sb-main">
+            @RenderBody()
+        </main>
+
+        <nav class="sb-bottom-nav">
+            <a href="/@Url.Action("Index","Dashboard")" class="sb-nav-item sb-nav-active">
+                <span class="sb-nav-icon">🏠</span>
+                <span class="sb-nav-label">Dashboard</span>
+            </a>
+            <a href="#homework" class="sb-nav-item">
+                <span class="sb-nav-icon">📚</span>
+                <span class="sb-nav-label">Homework</span>
+            </a>
+            <a href="#attendance" class="sb-nav-item">
+                <span class="sb-nav-icon">📅</span>
+                <span class="sb-nav-label">Attendance</span>
+            </a>
+            <a href="#marks" class="sb-nav-item">
+                <span class="sb-nav-icon">📊</span>
+                <span class="sb-nav-label">Marks</span>
+            </a>
+            <a href="/@Url.Action("Index","Admin")" class="sb-nav-item">
+                <span class="sb-nav-icon">⋯</span>
+                <span class="sb-nav-label">More</span>
+            </a>
+        </nav>
+    </div>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
